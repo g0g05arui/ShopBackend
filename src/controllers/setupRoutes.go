@@ -13,6 +13,7 @@ func InitRoutes() *gin.Engine {
 		unauthorized.GET("/", func(c *gin.Context) {
 			c.String(http.StatusOK, "Server running")
 		})
+		unauthorized.POST("/user", CreateUser)
 	}
 
 	return application
