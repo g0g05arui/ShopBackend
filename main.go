@@ -1,12 +1,9 @@
 package main
 
-import (
-	"awesomeProject/src/models"
-	"fmt"
-)
+import "awesomeProject/src/controllers"
 
 func main() {
-	var user models.User
-	user.Id = "5"
-	fmt.Println(user.Id)
+	app := controllers.InitRoutes()
+	app.Run(":8050")
+
 }
