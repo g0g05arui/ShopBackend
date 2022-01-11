@@ -16,6 +16,12 @@ func InitRoutes() *gin.Engine {
 		unauthorized.POST("/user", CreateUser)
 		unauthorized.POST("/auth", LoginUser)
 	}
-
+	secured := application.Group("/")
+	{
+		secured.Use(AuthMiddleware)
+		secured.GET("/test-secured", func(c *gin.Context) {
+			c.String(http.StatusOK, "Security running")
+		})
+	}
 	return application
 }
