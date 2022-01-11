@@ -13,10 +13,6 @@ func getUsersCollection() *mongo.Collection {
 	return database.Collection("Users")
 }
 
-/*
-	TODO check for user validity email,password,phoneNo,name and firstName are not empty
-*/
-
 func CreateNewUser(user models.User) (*mongo.InsertOneResult, error) {
 	usersCollection := getUsersCollection()
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)

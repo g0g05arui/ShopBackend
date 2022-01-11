@@ -14,6 +14,7 @@ func InitRoutes() *gin.Engine {
 			c.String(http.StatusOK, "Server running")
 		})
 		unauthorized.POST("/user", CreateUser)
+		unauthorized.POST("/auth", LoginUser)
 	}
 
 	return application
