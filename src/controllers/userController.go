@@ -19,3 +19,13 @@ func CreateUser(c *gin.Context) {
 	}
 	c.JSON(200, gin.H{"data": user, "insertedId": insertedId.InsertedID})
 }
+
+func GetUserProfile(c *gin.Context) {
+	user, err := services.GetUserByEmail(c.GetHeader("email"))
+	if err != nil {
+		c.JSON(404, models.HttpError{Error: "Can't find user", Code: 404})
+		return
+	}
+	user.Password = ""
+	c.JSON(200, user)
+}

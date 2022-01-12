@@ -22,6 +22,7 @@ func InitRoutes() *gin.Engine {
 		secured.GET("/test-secured", func(c *gin.Context) {
 			c.String(http.StatusOK, "Security running")
 		})
+		secured.GET("/profile", GetUserProfile)
 	}
 	return application
 }
